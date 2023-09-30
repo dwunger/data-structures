@@ -16,12 +16,16 @@ int main()
 }
 int length(const char * str)
 {
+    /*
     int len = 0;
     while (*str != '\0'){
         str++;
         len++;
     }
+    */
     //+1 null terminator
+    //read the docs
+    int len = strlen(str)
     return len + 1;
 }
 int startswith(const char * str, const char * sub_str)
@@ -36,7 +40,7 @@ int startswith(const char * str, const char * sub_str)
     if (str[0] == '\0'){
         return false;
     }
-    
+
     for (int i = 0; i < len; i++){
         // 
         if (str[i] != sub_str[i]){
