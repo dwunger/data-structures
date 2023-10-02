@@ -11,16 +11,23 @@ get a handle on basics syntax and strategies before moving on to more optimal da
 
 int startswith(const char * str, const char * sub_str);
 void lstrip(char * str);
+void rstrip(char * str);
+void strip(char * str);
 int main()
 {
-    char my_str[] = "  Doggo";
+    char my_str[] = "         Doggo     ";
     int len = sizeof(my_str) / sizeof(my_str[0]);
     // printf("length(): %d\nSizeof(): %d\n", length(my_str), len);
     // if (startswith(my_str, "Dog")){
     //     printf("%s starts with %s", my_str, "Dog");
     // }
-    lstrip(my_str);
     puts(my_str);
+    printf("strlen : %d\n", len);
+    strip(my_str);
+
+    puts(my_str);
+    len = strlen(my_str) + 1;
+    printf("strlen : %d\n", len);
     return 0;
 }
 
@@ -66,14 +73,37 @@ void lstrip(char * str)
         return;
     }
     //shift items in array
-    int offset = sizeof(str[0]);
     for (int i = 0; i < (len - leading_spaces); i++) {
         str[i] = str[i + leading_spaces];
         char let = str[i + leading_spaces];
-        printf("%c", let);
     }
     for (int i = 0; i < (leading_spaces); i++) {
         str[len - leading_spaces + i] = '\0';
     }
-    puts("");
+}
+void rstrip(char * str)
+{
+    if (str == NULL || *str == '\0') {
+        return;
+    }
+    int len = strlen(str);
+    int trailing_spaces = 0;
+    for (int i = 0; i < len; i++) {
+        if (str[len - i - 1] != ' ') {
+            break;
+        }
+        else {
+            trailing_spaces++;
+        }
+    }
+    if (trailing_spaces == 0) {
+        return;
+    }
+    for (int i = 0; i < trailing_spaces; i++) {
+        str[len - i - 1] = '\0';
+    }
+}
+void strip(char * str) {
+    lstrip(str);
+    rstrip(str);
 }
