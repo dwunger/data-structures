@@ -3,6 +3,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*
+This is intended to handle naive implementations of some useful built-in functions from Python.
+I have no expectation to optimize any of these (wasteful) solutions, but will instead use these to 
+get a handle on basics syntax and strategies before moving on to more optimal data structures
+*/
+
 int startswith(const char * str, const char * sub_str);
 void lstrip(char * str);
 int main()
