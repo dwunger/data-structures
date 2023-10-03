@@ -13,21 +13,44 @@ int startswith(const char * str, const char * sub_str);
 void lstrip(char * str);
 void rstrip(char * str);
 void strip(char * str);
+bool containsAnyChar(const char *str, const char *char_set);
 int main()
 {
-    char my_str[] = "         Doggo     ";
-    int len = sizeof(my_str) / sizeof(my_str[0]);
+    // char my_str[] = "         Doggo     ";
+    // int len = sizeof(my_str) / sizeof(my_str[0]);
     // printf("length(): %d\nSizeof(): %d\n", length(my_str), len);
     // if (startswith(my_str, "Dog")){
     //     printf("%s starts with %s", my_str, "Dog");
     // }
-    puts(my_str);
-    printf("strlen : %d\n", len);
-    strip(my_str);
+    // puts(my_str);
+    // printf("strlen : %d\n", len);
+    // strip(my_str);
 
-    puts(my_str);
-    len = strlen(my_str) + 1;
-    printf("strlen : %d\n", len);
+    // puts(my_str);
+    // len = strlen(my_str) + 1;
+    // printf("strlen : %d\n", len);
+    struct test {
+        const char *str;
+        const char *char_set;
+        bool expected;
+    };
+
+    struct test tests[] = {
+        {"hello", "world", true}, // 'o' and 'l' are common characters
+        {"apple", "banana", true}, // 'a' is a common character
+        {"apple", "xyz", false},   // no common characters
+        {"apple", "", false},      // empty char_set, no common characters
+        {"", "banana", false},     // empty str, no common characters
+        {"", "", false},           // both strings are empty
+    };
+
+    for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++) {
+        bool result = containsAnyChar(tests[i].str, tests[i].char_set);
+        printf("Test %zu - str: \"%s\", char_set: \"%s\"\n", i + 1, tests[i].str, tests[i].char_set);
+        printf("Expected: %d, Actual: %d\n", tests[i].expected, result);
+        printf("--------------------------------\n");
+    }
+
     return 0;
 }
 
@@ -106,4 +129,13 @@ void rstrip(char * str)
 void strip(char * str) {
     lstrip(str);
     rstrip(str);
+}
+bool containsAnyChar(const char *str, const char *char_set)
+{
+    char *match = strpbrk(str, char_set);
+    if (match != NULL) {
+        return true;
+    } else {
+        return false;
+    }
 }
