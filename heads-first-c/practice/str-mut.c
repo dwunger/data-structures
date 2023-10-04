@@ -132,10 +132,31 @@ void strip(char * str) {
 }
 bool containsAnyChar(const char *str, const char *char_set)
 {
+    // one-liner: if (strpbrk(str, char_set) != NULL) {. . .}
     char *match = strpbrk(str, char_set);
     if (match != NULL) {
         return true;
     } else {
         return false;
     }
+}
+
+int chcount(const char *str, char character)
+{
+    int len = strlen(str);
+    int count = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == character){
+            count++;
+        }
+    }
+    return count;
+}
+
+char **split(const char *str, char delimiter)
+{
+    //count instances of delimiter in str
+    int count = chcount(str, delimiter);
+    //get a pointer to each item and deposit in array of count dimensions
 }
