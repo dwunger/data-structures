@@ -153,10 +153,29 @@ int chcount(const char *str, char character)
     }
     return count;
 }
-
+int chcountn(const char *str, char character, int len)
+{
+    int count = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == character){
+            count++;
+        }
+    }
+    return count;
+}
 char **split(const char *str, char delimiter)
 {
+    int len = strlen(str);
     //count instances of delimiter in str
-    int count = chcount(str, delimiter);
+    int count = chcountn(str, delimiter, len);
     //get a pointer to each item and deposit in array of count dimensions
+    //need to malloc space on heap
+    for (int i = 0; i < count; i++)
+    {
+        for (int i = 0; i < len; i++)
+        {
+            //deposit & break on delimiter or sentinal value
+        }
+    }
 }
