@@ -166,11 +166,31 @@ int chcountn(const char *str, char character, int len)
 }
 char **split(const char *str, char delimiter)
 {
+    // Initial pass to collect some details for memory allocation
+    // max -> malloc space for the length of the longest substring
+    // count -> total count of resulting substrings 
+    // sub_len -> temporary variable to track len of substrings
+    int count = 0;
+    int substr_len = 0;
+    int max = 0;
+    for (int i = 0; i < len; i++)
+    {   
+        if (str[i] == character){
+            count++; 
+            if (sub_len > max) {
+                max = substr_len;
+            }
+            sub_len = 0;
+        } else {
+            substr_len++;
+        }
+    }
     int len = strlen(str);
     //count instances of delimiter in str
-    int count = chcountn(str, delimiter, len);
-    //get a pointer to each item and deposit in array of count dimensions
+    //int count = chcountn(str, delimiter, len);
+    //get a pointer to each item and deposit in 2D array of count rows
     //need to malloc space on heap
+    arr = malloc(sizeof(char[ROWS][COLS]));
     for (int i = 0; i < count; i++)
     {
         for (int i = 0; i < len; i++)
