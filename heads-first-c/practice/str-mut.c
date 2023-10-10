@@ -14,41 +14,20 @@ void lstrip(char * str);
 void rstrip(char * str);
 void strip(char * str);
 bool containsAnyChar(const char *str, const char *char_set);
+char **split(const char *str, char delimiter);
+
 int main()
 {
-    // char my_str[] = "         Doggo     ";
-    // int len = sizeof(my_str) / sizeof(my_str[0]);
-    // printf("length(): %d\nSizeof(): %d\n", length(my_str), len);
-    // if (startswith(my_str, "Dog")){
-    //     printf("%s starts with %s", my_str, "Dog");
-    // }
-    // puts(my_str);
-    // printf("strlen : %d\n", len);
-    // strip(my_str);
+    char **result;
+    const char *test_string = "This,is,a,test,string";
+    char delimiter = ',';
 
-    // puts(my_str);
-    // len = strlen(my_str) + 1;
-    // printf("strlen : %d\n", len);
-    struct test {
-        const char *str;
-        const char *char_set;
-        bool expected;
-    };
+    result = split(test_string, delimiter);
 
-    struct test tests[] = {
-        {"hello", "world", true}, // 'o' and 'l' are common characters
-        {"apple", "banana", true}, // 'a' is a common character
-        {"apple", "xyz", false},   // no common characters
-        {"apple", "", false},      // empty char_set, no common characters
-        {"", "banana", false},     // empty str, no common characters
-        {"", "", false},           // both strings are empty
-    };
-
-    for (size_t i = 0; i < sizeof(tests) / sizeof(tests[0]); i++) {
-        bool result = containsAnyChar(tests[i].str, tests[i].char_set);
-        printf("Test %zu - str: \"%s\", char_set: \"%s\"\n", i + 1, tests[i].str, tests[i].char_set);
-        printf("Expected: %d, Actual: %d\n", tests[i].expected, result);
-        printf("--------------------------------\n");
+    int i = 0;
+    while (result[i] != NULL) {
+        printf("Segment %d: %s\n", i, result[i]);
+        i++;
     }
 
     return 0;
@@ -132,10 +111,105 @@ void strip(char * str) {
 }
 bool containsAnyChar(const char *str, const char *char_set)
 {
+    // one-liner: if (strpbrk(str, char_set) != NULL) {. . .}
     char *match = strpbrk(str, char_set);
     if (match != NULL) {
         return true;
     } else {
         return false;
+    }
+}
+
+int chcount(const char *str, char character)
+{
+    int len = strlen(str);
+    int count = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == character){
+            count++;
+        }
+    }
+    return count;
+}
+int chcountn(const char *str, char character, int len)
+{
+    int count = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (str[i] == character){
+            count++;
+        }
+    }
+    return count;
+}
+char **split(const char *str, char delimiter)
+{
+    int len = strlen(str);
+    // Initial pass to collect some details for memory allocation
+    // max_len -> malloc space for the length of the longest substring
+    // count -> total count of resulting substrings 
+    // sub_len -> temporary variable to track len of substrings
+    int substr_count = 0;
+    int substr_len = 0;
+    int max_len = 0;
+    for (int i = 0; i < len; i++)
+    {   
+        if (str[i] == delimiter || str[i] == '\0') 
+        {
+            substr_count++; 
+            if (substr_len > max_len) {
+                max_len = substr_len;
+            }
+            substr_len = 0;
+        } else {
+            substr_len++;
+        }
+    }
+
+    // get a pointer to each item and deposit in 2D array of count rows
+    // need to malloc space on heap
+    // char split_strings = malloc(sizeof(char[substr_count][max_len]));
+    // Allocating memory for 2D array
+    char **split_strings = malloc(substr_count * sizeof(char *));
+    for(int i = 0; i < substr_count; i++) {
+        split_strings[i] = malloc(max_len * sizeof(char));
+    }
+
+    int characters_tested = 0;
+    /*    
+    for (int i = 0; i < substr_count; i++)
+    {
+        if (characters_tested == len) {
+            return split_strings;
+        }
+            
+        for (int j = 0; j < len; j++)
+        {
+            // deposit & break on delimiter or sentinal value
+            if (str[i] == delimiter || str[i] == '\0') {
+                break;
+            } else {
+                char split_strings[i][j];
+            }
+        }
+    }
+    */
+    for (int i = 0; i < substr_count; i++) {
+        if (characters_tested == len) {
+            return split_strings;
+        }
+
+        for (int j = 0; j < max_len; j++) { 
+            // deposit & break on delimiter or sentinel value
+            if (str[characters_tested] == delimiter || str[characters_tested] == '\0') {
+                split_strings[i][j] = '\0';  // Null-terminate the current substring
+                characters_tested++; 
+                break;
+            } else {
+                split_strings[i][j] = str[characters_tested];
+                characters_tested++;
+            }
+        }
     }
 }
