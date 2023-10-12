@@ -175,26 +175,11 @@ char **split(const char *str, char delimiter)
     for(int i = 0; i < substr_count; i++) {
         split_strings[i] = malloc(max_len * sizeof(char));
     }
+    // Set the last pointer to NULL
+    split_strings[substr_count] = NULL;
 
     int characters_tested = 0;
-    /*    
-    for (int i = 0; i < substr_count; i++)
-    {
-        if (characters_tested == len) {
-            return split_strings;
-        }
-            
-        for (int j = 0; j < len; j++)
-        {
-            // deposit & break on delimiter or sentinal value
-            if (str[i] == delimiter || str[i] == '\0') {
-                break;
-            } else {
-                char split_strings[i][j];
-            }
-        }
-    }
-    */
+    
     for (int i = 0; i < substr_count; i++) {
         if (characters_tested == len) {
             return split_strings;
