@@ -199,6 +199,8 @@ char **split(const char *str, char delimiter)
     for(int i = 0; i < substr_count; i++) {
         split_strings[i] = malloc(max_len * sizeof(char));
     }
+    // Set the last pointer to NULL
+    split_strings[substr_count] = NULL;
 
     int characters_tested = 0;
     
