@@ -3,7 +3,7 @@
 
 int main(void) {
     // Single pointer
-    char array_of_char[10] = "Array of c";
+    char array_of_char[12] = "Array of c\n";
 	printf(array_of_char);
     // Double pointer
 	
