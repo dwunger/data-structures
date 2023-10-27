@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /*
 void swap_arrays(char **str1, char **str2)
 {
