@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap_d(int ** number1, int ** number2)
+void ptr_swap(int ** number1, int ** number2)
 {
     if (!number1 || !number2) {
         printf("Received Null pointer");
@@ -23,7 +23,7 @@ int main(void)
 
     printf("Number 1: %d\nNumber 2: %d\n", *ptr_num1, *ptr_num2);
 
-    swap_d(&ptr_num1, &ptr_num2);
+    ptr_swap(&ptr_num1, &ptr_num2);
 
     printf("Number 1: %d\nNumber 2: %d\n", *ptr_num1, *ptr_num2);
 
