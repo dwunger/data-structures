@@ -1,19 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void) {
-    // Single pointer
-    char array_of_char[12] = "Array of c\n";
-	printf(array_of_char);
-    // Double pointer
-	
-	char array_of_array[10][2] = {"A\0", "r\0", "r\0", "a\0", "y\0", " \0",
-			"o\0", "f\0", " \0", "A\0"};
-	for (int i = 0; i < 10; i++) {
-		printf(array_of_array[i]);
-	}
+void swap_d(int ** number1, int ** number2)
+{
+    if (!number1 || !number2) {
+        printf("Received Null pointer");
+        return;
+    }
 
-	return 0;
-
+    int * temp_ptr = *number1;
+    *number1 = *number2;
+    *number2 = temp_ptr;
 }
 
+int main(void) 
+{
+    int num1 = 1;
+    int num2 = 2;
+    
+    int *ptr_num1 = &num1;
+    int *ptr_num2 = &num2;
+
+    printf("Number 1: %d\nNumber 2: %d\n", *ptr_num1, *ptr_num2);
+
+    swap_d(&ptr_num1, &ptr_num2);
+
+    printf("Number 1: %d\nNumber 2: %d\n", *ptr_num1, *ptr_num2);
+
+    return 0;
+}
