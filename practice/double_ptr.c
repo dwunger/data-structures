@@ -6,6 +6,8 @@ void ptr_swap(int ** number1, int ** number2);
 void int_swap(int * number1, int * number2);
 void str_swap(char *str1, char *str2);
 void ref_swap(char **str1, char **str2);
+size_t nrst_sqr(size_t length);
+size_t max_sqr(size_t *lengths, size_t array_length);
 
 int main(void) 
 {
@@ -46,8 +48,38 @@ int main(void)
     ref_swap(&hello_ptr, &adios_ptr);
 
     printf("Hello String: %s\nAdios String: %s\n", hello_ptr, adios_ptr);
+    
+    size_t length_test[4] = {1,2,3,4};
+    
+    size_t capacity = max_sqr(length_test, 4);
+
+    printf("Maximum square: %ld", capacity);
 
     return 0;
+}
+size_t nrst_sqr(size_t length)
+{
+    size_t square = 1;
+    while (length < square) {
+        square << 1;
+    }
+    return square;
+}
+size_t max_sqr(size_t *lengths, size_t array_length)
+{
+    if (!lengths) {
+        fprintf(stderr, "array not initialized");
+        return 0;
+    }
+    
+    size_t max = lengths[0];
+    for (int i = 0; i < array_length; i++) {
+        if (lengths[i] > max) max = lengths[i];
+    }
+    
+    size_t capacity = nrst_sqr(max);
+    return capacity;
+
 }
 
 void ref_swap(char **str1, char **str2) 
