@@ -6,8 +6,8 @@ void ptr_swap(int ** number1, int ** number2);
 void int_swap(int * number1, int * number2);
 void str_swap(char *str1, char *str2);
 void ref_swap(char **str1, char **str2);
-size_t nrst_sqr(size_t length);
-size_t max_sqr(size_t *lengths, size_t array_length);
+size_t nrst_bin_mult(size_t length);
+size_t max_bin_mult(size_t *lengths, size_t array_length);
 
 int main(void) 
 {
@@ -49,37 +49,44 @@ int main(void)
 
     printf("Hello String: %s\nAdios String: %s\n", hello_ptr, adios_ptr);
     
-    size_t length_test[4] = {1,2,3,4};
+    size_t length_test[9] = {1,2,3,4,5,6,7,8,9};
     
-    size_t capacity = max_sqr(length_test, 4);
+    size_t capacity = max_bin_mult(length_test, 4);
 
-    printf("Maximum square: %ld", capacity);
+    printf("Maximum square: %ld\n", capacity);
 
     return 0;
 }
-size_t nrst_sqr(size_t length)
+size_t nrst_bin_mult(size_t length)
 {
-    size_t square = 1;
-    while (length < square) {
-        square << 1;
+    size_t square = 2;
+    while (length > square) {
+        square <<= 1;
+        printf("===\nSquare: %zu\nLength: %zu\n", square, length);
     }
     return square;
 }
-size_t max_sqr(size_t *lengths, size_t array_length)
+size_t max_bin_mult(size_t *lengths, size_t array_length)
 {
     if (!lengths) {
         fprintf(stderr, "array not initialized");
         return 0;
     }
-    
+    puts("if (lengths[i] > max) max = lengths[i];");
+   
     size_t max = lengths[0];
-    for (int i = 0; i < array_length; i++) {
+    for (size_t i = 0; i < array_length; i++) {
+    
+        //printf("if (%10ld > %3ld) %3ld = %10ld; (i = %ld)\n", 
+        //       lengths[i], max, max, lengths[i], i); 
+       
         if (lengths[i] > max) max = lengths[i];
     }
     
-    size_t capacity = nrst_sqr(max);
+    // f(n) = (n + x)^2, where { first x to satisfy: f(n) > n
+    size_t capacity = nrst_bin_mult(max);
+    printf("capacity: %ld\n", capacity);
     return capacity;
-
 }
 
 void ref_swap(char **str1, char **str2) 
