@@ -5,9 +5,13 @@
 
 int main(void) {
     puts("ASCII table:");
-    for (int i = 0; i < 256; i++) {
-        printf("%d: %c\n", i, i); 
+    for (int i = 65; i <= 122; i++) {
+        if ((i <= 90) || (i >= 97)) {
+            printf("%c: %d\n", i, i);
+        }
     }
+    //printf("a: %d, A: %d, z: %d, Z: %d\n", 'a', 'A', 'z', 'Z');
+
     return 0;
 }
 
