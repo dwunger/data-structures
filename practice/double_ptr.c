@@ -53,7 +53,7 @@ int main(void)
     
     size_t capacity = max_bin_mult(length_test, 4);
 
-    printf("Maximum square: %ld\n", capacity);
+    printf("Maximum square: %zu\n", capacity);
 
     return 0;
 }
@@ -77,15 +77,15 @@ size_t max_bin_mult(size_t *lengths, size_t array_length)
     size_t max = lengths[0];
     for (size_t i = 0; i < array_length; i++) {
     
-        //printf("if (%10ld > %3ld) %3ld = %10ld; (i = %ld)\n", 
+        //printf("if (%10ld > %3ld) %3ld = %10ld; (i = %zu)\n", 
         //       lengths[i], max, max, lengths[i], i); 
        
         if (lengths[i] > max) max = lengths[i];
     }
     
-    // f(n) = (n + x)^2, where { first x to satisfy: f(n) > n
+    // f(n) = 2(n + x), where { first x to satisfy: f(n) > n
     size_t capacity = nrst_bin_mult(max);
-    printf("capacity: %ld\n", capacity);
+    printf("capacity: %zu\n", capacity);
     return capacity;
 }
 
