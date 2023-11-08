@@ -3,12 +3,11 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
-#include <stdbool.h>
 
 int is_palindrome(const char *str);
 int is_palindrome_slow(const char *str);
 
-int main (void)
+int main(void)
 {
     char example_palindrome[] = "racecar";
     char false_palindrome[] = "palindrome";
@@ -16,24 +15,26 @@ int main (void)
     
     test = is_palindrome(example_palindrome);
     
-    assert(test == true);
+    assert(test == 1);
     
-     
     test = is_palindrome(false_palindrome);
     
-    assert(test == false);
-     
-    
+    assert(test == 0);
+    puts("All tests passing!")
     return 0;
 }
 
 int is_palindrome(const char *str)
 {
-
-    int len = strlen(str);
-    
-    for (int i = 0; i <= len; i++) {
-        if (str[])
+    if (!str) {
+        fprintf(stderr, "Received unitialized pointer");
     }
+    int len = strlen(str);
+    for (int i = 0; i < len; i++) {
+        //printf("%c != %c\n", str[i], str[len -1 - i]);
+        if (str[i] != str[len - 1 - i]) return 0;
+    }
+    return 1;
+    
 }
 int is_palindrome_slow(const char *str);
