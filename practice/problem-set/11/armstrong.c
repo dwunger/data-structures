@@ -10,11 +10,41 @@ int is_armstrong(int number);
 
 int main(void) 
 {
+    // Created temp indices to avoid making an append function or linked list
+    int armstrongs[1000];
+    int a_idx = 0;
+
+    int non_armstrongs[1000];
+    int n_idx = 0;
+
     int result = 0;
     int number = 371;
-    result = is_armstrong(number);
-    printf("%d", result);
-    
+    for (int i = 0; i < 1000; i++) {
+        result = is_armstrong(i);
+        if (result) {
+            armstrongs[a_idx] = i;
+            a_idx++;
+        } else {
+            non_armstrongs[n_idx] = i;
+            n_idx++;
+        }
+
+        //printf("%d : %d\n", i, result);
+    }
+    printf("Non-Armstrongs\n");
+    int last = -1;
+    printf("%d ", non_armstrongs[0]);
+    for (int i = 1; i < 1000; i++) {
+        last = non_armstrongs[i - 1];
+        if (last + 1 != non_armstrongs[i]) {
+            printf("- %d, ", non_armstrongs[i]);
+        } else {
+            //printf("", non_armstrongs[i]);
+            continue; 
+        }
+    }
+
+
     return 0;
 }
 
