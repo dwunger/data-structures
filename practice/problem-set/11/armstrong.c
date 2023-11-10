@@ -11,9 +11,10 @@ int is_armstrong(int number);
 int main(void) 
 {
     int result = 0;
+    int number = 371;
     result = is_armstrong(number);
+    printf("%d", result);
     
-
     return 0;
 }
 
@@ -29,7 +30,7 @@ int is_armstrong(int number)
     int sum = 0;
     int power = 0;
     for (int i = 0; i < len; i++) {
-        digit = atoi(buffer[i]);
+        digit = (int)buffer[i] - 0x30; // 0x30 -> 48
         power = pow(digit, len);
         sum += power;
     }
