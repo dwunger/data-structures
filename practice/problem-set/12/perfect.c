@@ -18,7 +18,16 @@ int get_proper_divisors(const int value, int *divisors, int *len) {
     } 
 }
 int main(void) {
+    int test_value = 6;
+    int proper_divisors[256];
+    int len = 0;
+
+    get_proper_divisors(test_value, proper_divisors, &len);
     
+    for (int i = 0; i < len; i++) {
+        printf("%d, ", proper_divisors[i]);
+    }
+
     return 0;
 }
 
