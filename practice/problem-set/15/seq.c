@@ -20,7 +20,7 @@ int factorial(int argument)
 
     int result = argument;
 
-    for (int i = 1; i < argument; i+=delta) {
+    for (int i = 1; i < argument; i++) {
         result *= i;
     }
 
@@ -32,8 +32,12 @@ int factorial(int argument)
 }
 
 int main(void)
-{
-    int fact = factorial(4);    
-    printf("%d", fact);
+{    
+    int fact;
+    for (int i = -10; i < 11; i++) {
+        fact = factorial(i);
+        printf("i! = %d\n", fact);
+    }
+    
     return 0;
 }
