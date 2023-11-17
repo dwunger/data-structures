@@ -8,20 +8,26 @@
 
 int factorial(int argument)
 {
-    int increment;
+    int delta;
     if (argument == 0) {
         return 1;
     } else if (argument < 0 ) {
-        increment = -1;
+        delta = -1;
+        argument *= -1;
     } else {
-        increment = 1;
+        delta = 1;
     }
 
-    int result = 1;
+    int result = argument;
 
-    for (int i = 0; i != argument; i+=increment) {
+    for (int i = 1; i < argument; i+=delta) {
         result *= i;
     }
+
+    if (delta == -1) {
+        result *= -1;
+    }
+
     return result;
 }
 
