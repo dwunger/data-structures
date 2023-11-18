@@ -1,9 +1,10 @@
 // Goal: Formalize consistent grammatical construction for logical operators
 // Validate construction in code.
 #include <stdio.h>
+#include <stdbool.h>
 
-int AND(int input1, int input2);
-
+bool AND(bool input1, bool input2);
+bool NOT(bool input);
 int main(void) 
 {
     // ===AND===
@@ -17,15 +18,43 @@ int main(void)
                                                       0, 0, 1, 1,
                                                       AND(0,0), AND(1,0),
                                                       AND(0,1), AND(1,1));
+
+
+    // ===NOT===
+    puts("===NOT===");
+    // Expected:
+    // 0 1
+    // 1 0
+    
+    printf("%d %d\n%d %d\n", 0, 1, NOT(0), NOT(1));
+
+
+
     return 0;
 }
 
 
+bool NOT(bool input)
+{
+    // [TRUE] <- IF input IS NOT [TRUE]
+    // [RESULT] <- [conditional qualifier] [operator] [argument]
+    // Grammar:
+    // [Adj.] <- [Conj.] [Adj.] [V.]
 
-int AND(int input1, int input2)
+    if (input != true) {
+        return true;
+    }
+
+    return false;
+    // Idiomatic C:
+    // return !input;
+}
+
+
+bool AND(bool input1, bool input2)
 {
     // [TRUE] <- IF input1 AND input2 ARE [TRUE] 
-    // [RESULT] <- [condition qualifier] [argument(s)] 
+    // [RESULT] <- [condition qualifier] [operator] [argument(s)] 
     // Grammar:
     // [Adj.] <- [Conj.] [Adj(s).] [V.]
     
@@ -35,12 +64,12 @@ int AND(int input1, int input2)
     // So input2 is nested in input1
     if (input1) {
         if (input2) {
-            return 1;
+            return true;
         }
     } 
-    return 0; 
+    return false; 
     
-    // C standard: 
+    // Idiomatic C: 
     // return (input1 && input2);
 }
     
