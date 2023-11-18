@@ -5,6 +5,8 @@
 
 bool AND(bool input1, bool input2);
 bool NOT(bool input);
+bool OR(bool input1, bool input2);
+
 int main(void) 
 {
     // ===AND===
@@ -29,10 +31,36 @@ int main(void)
     printf("%d %d\n%d %d\n", 0, 1, NOT(0), NOT(1));
 
 
-
+    // ====OR===
+    puts("====OR===");
+    // Expected:
+    // 0 0 1 1
+    // 0 1 0 1
+    // 0 1 1 1
+    
+    
+    printf("%d %d %d %d\n%d %d %d %d\n%d %d %d %d\n", 0, 0, 1, 1,
+                                                      0, 1, 0, 1,
+                                                    OR(0,0), OR(0,1),
+                                                    OR(1,0), OR(1,1));
     return 0;
 }
 
+
+bool OR(bool input1, bool input2)
+{
+    //[TRUE] <- IF input1 OR input2 [TRUE]
+    //[RESULT]  <- [conditional qualifier] [operator] [arguments]
+    // Grammar:
+    // [Adj.] <- [Conj.] [Adj(s).] [V.]
+    if (input1) {
+        return true;
+    }
+    if (input2) {
+        return true;
+    }
+    return false;
+}
 
 bool NOT(bool input)
 {
