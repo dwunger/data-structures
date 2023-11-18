@@ -6,6 +6,7 @@
 bool AND(bool input1, bool input2);
 bool NOT(bool input);
 bool OR(bool input1, bool input2);
+bool XOR(bool input1, bool input2);
 
 int main(void) 
 {
@@ -43,14 +44,43 @@ int main(void)
                                                       0, 1, 0, 1,
                                                     OR(0,0), OR(0,1),
                                                     OR(1,0), OR(1,1));
+
+
+    puts("===XOR===");
+    // Expected:
+    // 0 0 1 1
+    // 0 1 0 1
+    // 0 1 1 0
+    
+    
+    printf("%d %d %d %d\n%d %d %d %d\n%d %d %d %d\n", 0, 0, 1, 1,
+                                                      0, 1, 0, 1,
+                                                    XOR(0,0), XOR(0,1),
+                                                    XOR(1,0), XOR(1,1));
     return 0;
 }
 
+bool XOR(bool input1, bool input2)
+{
+    // [TRUE] <- IF input1 [TRUE] OR input2 [TRUE] AND NOT input1 AND input2 ARE
+    //                                                                  [TRUE]
+    
+    // Idiomatic C:
+    // return (input1 ^ input2);
+
+    if (!(input1 && input2)) {
+        if (input1) return true;
+        if (input2) return true;
+    }
+
+    return false;
+
+}
 
 bool OR(bool input1, bool input2)
 {
-    //[TRUE] <- IF input1 OR input2 [TRUE]
-    //[RESULT]  <- [conditional qualifier] [operator] [arguments]
+    // [TRUE] <- IF input1 OR input2 [TRUE]
+    // [RESULT]  <- [conditional qualifier] [operator] [arguments]
     // Grammar:
     // [Adj.] <- [Conj.] [Adj(s).] [V.]
     if (input1) {
@@ -60,6 +90,9 @@ bool OR(bool input1, bool input2)
         return true;
     }
     return false;
+
+    // Idiomatic C:
+    // return (input1 || input2);
 }
 
 bool NOT(bool input)
