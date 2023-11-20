@@ -6,9 +6,9 @@
 
 #include <stdio.h>
 
-int factorial(int argument)
+long long factorial(long long argument)
 {
-    int delta;
+    long long delta;
     if (argument == 0) {
         return 1;
     } else if (argument < 0 ) {
@@ -18,9 +18,9 @@ int factorial(int argument)
         delta = 1;
     }
 
-    int result = argument;
+    long long result = argument;
 
-    for (int i = 1; i < argument; i++) {
+    for (long long i = 1; i < argument; i++) {
         result *= i;
     }
 
@@ -33,11 +33,11 @@ int factorial(int argument)
 
 int main(void)
 {    
-    int fact;
-    for (int i = -10; i < 11; i++) {
+    long long fact;
+    for (int i = 19; i < 20; i++) {
         fact = factorial(i);
-        printf("i! = %d\n", fact);
+        printf("%d! = %lld\n", i, fact);
     }
-    
+    printf("sizeof(long long): %d\nsizeof(int): %d\n", sizeof(long long), sizeof(int));    
     return 0;
 }
