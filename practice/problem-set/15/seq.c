@@ -5,6 +5,7 @@
 // Maybe intended as a McClaurin Expansion for sin(x)?
 
 #include <stdio.h>
+#include <math.h>
 
 long long factorial(long long argument)
 {
@@ -30,6 +31,28 @@ long long factorial(long long argument)
 
     return result;
 }
+void expand_series(double angle, int sigfigs)
+{
+    angle = angle * (M_PI / 180.0);
+
+    double power = 0; int fact = 0; double y = 0;
+    // y = x + (x^3)/3! + (x^5)/5! + ...
+    int par = 0;
+    for (int x = 1; x < sigfigs; x+=2) {
+        power = pow(angle, x);
+        fact = factorial(x);
+        
+        if (par) {
+            y += power/(double)fact;
+        } else {
+            y -= power/(double)fact;
+        }
+
+        par = ~par;
+        }
+    printf("Series: %g\n", (double)y);
+
+}
 
 int main(void)
 {    
@@ -39,5 +62,7 @@ int main(void)
         printf("%d! = %lld\n", i, fact);
     }
     printf("sizeof(long long): %d\nsizeof(int): %d\n", sizeof(long long), sizeof(int));    
+    
+    expand_series(90,15);
     return 0;
 }
