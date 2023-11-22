@@ -9,19 +9,29 @@ Write a C program that reads the customer number and power consumed and prints t
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 typedef struct Customer {
     char *name;
     int identifier;
     int cycle_energy_consumption;
 } CUSTOMER;
 
-CUSTOMER *new_customer(char *name, int uid, int cycle_energy_consumption)
+CUSTOMER *new_customer(char *input_name, int input_uid, int input_monthly_consumption)
 {
-    
-    return ptr_struct_customer;
-}
+    // Allocate memory for Customer struct
+    CUSTOMER *abstract_customer = malloc(sizeof(CUSTOMER));
 
+    if (abstract_customer == NULL) {
+        fprintf(stderr, "Failed to allocate memory");
+        return 0;
+    }
+
+    strcpy(abstract_customer -> name, input_name);
+    abstract_customer -> identifier = input_uid;
+    abstract_customer -> cycle_energy_consumption = input_monthly_consumption;
+
+    return abstract_customer;
+}
 
 int main(void)
 {
@@ -30,7 +40,11 @@ int main(void)
     int uid = 0xFFFFFF;
     double consumption = 365; 
     
-    CUSTOMER *consumer = new_customer(name, uid, consumption);
-
+    CUSTOMER *customer = new_customer(name, uid, consumption);
+    
+    // Construct a customer
+    printf("Customer Name: %s\n", (*(customer)).name);
+    printf("Customer ID: %d\n", (*(customer)).identifier);
+    printf("Energy Cons: %d\n", (*(customer)).cycle_energy_consumption);
     return 0;
 }
