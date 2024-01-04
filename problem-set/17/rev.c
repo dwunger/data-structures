@@ -19,19 +19,23 @@ int main(void) {
 
 
 int write_array(int *array, int len){
-    char string[len * 12];
-    string[0] = '\0';
-    char temp[12];
-    temp[0] = '\0';
 
-    for (int i = 0; i < len; i++) {    
+    char string[len * 12];
+    char temp[12];
+    
+    string[0] = '\0';
+    temp[0] = '\0';
+    
+    for (int i = 0; i < len - 1; i++) {    
         sprintf(temp, "%d, ", array[i]);
         strcat(string, temp);
-
     }
+    
+    sprintf(temp, "%d", array[len - 1]);
+    strcat(string, temp);   
+
     printf(string);
 
     return 0;
 }
-
 
