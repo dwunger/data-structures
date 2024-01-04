@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 int write_array(int *array, int len);
-int reverse(int *array);
+int reverse(int *array, size_t len);
 
 int main(void) {
     
@@ -13,7 +13,10 @@ int main(void) {
 
     write_array(array, len);
 
-
+    reverse(array, len);
+    
+    write_array(array, len);
+    
     return 0;
 }
 
@@ -39,3 +42,29 @@ int write_array(int *array, int len){
     return 0;
 }
 
+int reverse(int *array, size_t len) {
+    
+    if (!array) {
+        fprintf(stderr, "array points to null");
+        return 0;
+    }
+
+    if (len == 0) {
+        return 1;
+    }
+
+    int temp[len];
+
+    for (int i = 0; i < len; i++) {
+        temp[len - i - 1] = array[i];
+
+    }
+
+
+    for (int i = 0; i < len; i++) {
+        array[i] = temp[i];
+
+    }
+
+   return 1;
+}
