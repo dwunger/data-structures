@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 int write_array(int *array, int len);
 int reverse(int *array, size_t len);
 
@@ -10,11 +11,12 @@ int main(void) {
     
     int array[] = {1,2,3,4,5};
     int len = sizeof(array)/sizeof(array[0]);
-
+    puts("Array:");
     write_array(array, len);
 
     reverse(array, len);
     
+    puts("Reversed:");
     write_array(array, len);
     
     return 0;
@@ -34,7 +36,7 @@ int write_array(int *array, int len){
         strcat(string, temp);
     }
     
-    sprintf(temp, "%d", array[len - 1]);
+    sprintf(temp, "%d\n", array[len - 1]);
     strcat(string, temp);   
 
     printf(string);
