@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "Build and Run",
+            "type": "shell",
+            "command": "& gcc -g '${file}' -o '${fileDirname}\\${fileBasenameNoExtension}.exe'; if ($?) { & '${fileDirname}\\${fileBasenameNoExtension}.exe' }",
+            "options": {
+                "cwd": "${fileDirname}",
+                "shell": {
+                    "executable": "powershell.exe",
+                    "args": ["-Command"]
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "clear": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+		{
+			"type": "cppbuild",
+			"label": "C/C++: gcc.exe build active file",
+			"command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\msys64\\ucrt64\\bin\\gcc.exe\""
+		}
+	]
+}
