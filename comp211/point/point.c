@@ -37,4 +37,3 @@ Point* point_offset(Point *self, double x, double y) {
     }
     return self;
 }
-
