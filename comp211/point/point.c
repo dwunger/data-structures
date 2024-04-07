@@ -31,8 +31,8 @@ Point* point_offset(Point *self, double x, double y) {
   if (self == NULL) {
         fprintf(stderr, "point_offset received a pointer to null\n");
     } else {
-        (*self).x = x;
-        (*self).y = y;
+        (*self).x += x;
+        (*self).y += y;
     }
     return self;
 }
