@@ -13,7 +13,7 @@ Point* point_create(double x, double y) {
 
 void point_destroy(Point *self) {
     if (self == NULL) {
-        fprintf(stderr, "point_destroy received a null pointer\n");
+        fprintf(stderr, "point_destroy received a null pointer, cannot free memory\n");
     } else {
         free(self);
     }
@@ -30,6 +30,7 @@ void point_print(Point *self) {
 Point* point_offset(Point *self, double x, double y) {
   if (self == NULL) {
         fprintf(stderr, "point_offset received a pointer to null\n");
+        exit(1);
     } else {
         (*self).x += x;
         (*self).y += y;
