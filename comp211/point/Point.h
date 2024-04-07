@@ -9,14 +9,31 @@ struct Point
 
 typedef struct Point Point;
 
+
+/*
+ * Instantiates a Point type 
+ * Accepts members _x_ and _y_ of double type
+ * Returns a pointer to structure on heap or null if 
+ * allocation fails.
+ */
 Point* point_create(double x, double y);
 
+/*
+ * Deallocate memory of point _self_
+ * Accepts pointer to Point struct type
+ */
 void point_destroy(Point *self);
 
-void point_print(Point *self);
 /*
-Returns address to mutated point structure for inline manipluation
-*/
+ * Write point structure representation to standard out 
+ * Accepts pointer to Point struct type 
+ */
+void point_print(Point *self);
+
+/*
+ * Applies an offset to _self_ and returns a pointer
+ * to mutated point.
+ */
 Point* point_offset(Point *self, double x, double y);
 
 
