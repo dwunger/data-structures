@@ -27,7 +27,7 @@ void point_print(Point *self);
 /*
 Returns address to mutated point structure for inline manipluation
 */
-Point* point_offset(Point self, double x, double y);
+Point* point_offset(Point *self, double x, double y);
 
 
 
