@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "Guards.h"
+#include "point.h"
 
 Point* point_create(double x, double y) {
 

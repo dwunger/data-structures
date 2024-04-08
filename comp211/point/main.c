@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 #include "Guards.h"
-#include "Point.h"
+#include "point.h"
 
 
-int main(int argc, char *argv[])
+int main()
 {
     // Create a point struct instance
     Point* boston_coords = point_create(0,0);
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     point_print(boston_coords);
 
     // Create a second point as an offset
-    Point* point_offset = point_create(128.256, 512.1024);
+    Point* offset = point_create(128.256, 512.1024);
     
     // Offset the first point using point offset instance
     point_offset(boston_coords, offset->x, offset->y);
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
     // Free memory
     point_destroy(boston_coords);
-    point_destroy(point_offset);
+    point_destroy(offset);
 
     return 0;
 
