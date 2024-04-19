@@ -17,3 +17,11 @@ TEST(copy, string) {
     copy(dst, src, sizeof(src));
     ASSERT_STREQ(dst, src);
 }
+
+TEST(copy, double) {
+    double src = 3.1415;
+    double dst;
+    copy(&dst, &src, sizeof(src));
+    ASSERT_EQ(dst, src);
+}
+
