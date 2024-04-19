@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void* OOM_GUARD(void *p){
+const void* OOM_GUARD(const void *p){
     if (p == NULL) {
         fprintf(stderr, "Out of memory\n");
         exit(EXIT_FAILURE);
