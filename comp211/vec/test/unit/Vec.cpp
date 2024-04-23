@@ -27,6 +27,17 @@ TEST(Vec, ref) {
     Vec_drop(&v);
 }
 
+TEST(Vec, ref_1) {
+    Vec v = Vec_value(10, sizeof(int16_t));
+    int16_t *buffer = (int16_t*) v.buffer;
+    buffer[0] = 255;
+    buffer[1] = 512;
+    v.length = 2;
+    ASSERT_EQ(&buffer[0], Vec_ref(&v, 0));
+    ASSERT_EQ(&buffer[1], Vec_ref(&v, 1));
+    Vec_drop(&v);
+}
+
 TEST(Vec, set) {
     Vec v = Vec_value(1, sizeof(int16_t));
 

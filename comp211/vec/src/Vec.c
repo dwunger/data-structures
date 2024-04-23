@@ -45,7 +45,8 @@ const void* Vec_items(const Vec *self)
 
 void* Vec_ref(const Vec *self, size_t index)
 {
-    return NULL;
+    
+    return self->buffer + (index * self->item_size);
 }
 
 void Vec_get(const Vec *self, size_t index, void *out)
