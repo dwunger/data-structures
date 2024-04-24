@@ -56,7 +56,11 @@ void Vec_get(const Vec *self, size_t index, void *out)
 
 void Vec_set(Vec *self, size_t index, const void *value)
 {
-    // TODO
+    memcpy(self->buffer, value, self->item_size);
+   
+    if (index + 1 > self->length) {
+        self->length = index + 1;
+    }
 }
 
 /* Helpers */
