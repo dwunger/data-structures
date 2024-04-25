@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-
+#include <stdint.h>
 #include "Guards.h"
 #include "Vec.h"
 
@@ -56,11 +56,17 @@ void Vec_get(const Vec *self, size_t index, void *out)
 
 void Vec_set(Vec *self, size_t index, const void *value)
 {
-    memcpy(self->buffer, value, self->item_size);
-   
+    // Since buffer has not been casted to the correct type, incrementing
+    // the address will add 1 byte rather than the item_size.
+    // As the type information is not known at runtime, casting cannot
+    // be performed for automatic pointer arithmetic
+    memcpy((char *)self->buffer + index * self->item_size, value, self->item_size);
+    
     if (index + 1 > self->length) {
         self->length = index + 1;
     }
+
+    
 }
 
 /* Helpers */
