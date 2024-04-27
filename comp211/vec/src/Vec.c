@@ -51,7 +51,7 @@ void* Vec_ref(const Vec *self, size_t index)
 
 void Vec_get(const Vec *self, size_t index, void *out)
 {
-    // TODO
+    memcpy(out, Vec_ref(self, index), self->item_size); 
 }
 
 void Vec_set(Vec *self, size_t index, const void *value)
