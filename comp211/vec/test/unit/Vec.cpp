@@ -65,6 +65,25 @@ TEST(Vec, get) {
     Vec_drop(&v);
 }
 
+TEST(Vec, get_set_contract) {
+    Vec v = Vec_value(1, sizeof(int16_t));
+    int16_t x = 256;
+    int16_t y = 512;
+    ASSERT_EQ(0, Vec_length(&v));
+    Vec_set(&v, 0, &x);
+    ASSERT_EQ(1, Vec_length(&v));
+    Vec_set(&v, 1, &y);
+    ASSERT_EQ(2, Vec_length(&v));
+
+    int16_t x_out = 0;
+    int16_t y_out = 0;
+    Vec_get(&v, 0, &x_out);
+    Vec_get(&v, 1, &y_out);
+
+    ASSERT_EQ(x, x_out);
+    ASSERT_EQ(y, y_out);
+}
+
 // TODO: Contractual Tests
 
 
