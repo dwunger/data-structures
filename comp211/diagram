@@ -1,0 +1,55 @@
+graph TD
+    A[COMP 110] --> B(COMP 210)
+    A --> C(COMP 283 / MATH 381 / STOR 315)
+    B --> D(COMP 301)
+    B --> E(COMP 211)
+    E --> F(COMP 311)
+    C --> D
+    F --> G(COMP 421 - Files & Databases)
+    F --> H(COMP 431 - Internet Services)
+    F --> I(COMP 433 - Mobile Computing)
+    F --> J(COMP 435 - Computer Security)
+    F --> K(COMP 475 - 2D Computer Graphics)
+    F --> L(COMP 523 - Software Engineering)
+    D -.-> G(COMP 421 - Files & Databases)
+    D -.-> H(COMP 431 - Internet Services)
+    D -.-> I(COMP 433 - Mobile Computing)
+    D -.-> J(COMP 435 - Computer Security)
+    D -.-> K(COMP 475 - 2D Computer Graphics)
+    D -.-> L(COMP 523 - Software Engineering)
+    D -.-> M(COMP 524 - Programming Languages)
+    F --> N(COMP 530 - Operating Systems)
+    F --> O(COMP 541 - Digital Logic & Computer Design)  
+    D -.-> N(COMP 530 - Operating Systems)
+    D -.-> O(COMP 541 - Digital Logic & Computer Design)  
+    D --> P(COMP 550 - Algorithms & Analysis)
+    F --> Q(COMP 562 - Intro to Machine Learning)
+    F --> R(COMP 581 - Intro to Robotics)
+    D -.-> Q(COMP 562 - Intro to Machine Learning)
+    D -.-> R(COMP 581 - Intro to Robotics)
+    P --> S(COMP 455 - Models of Languages & Computation)
+    Q --> T(COMP 664 - Deep Learning)
+    N --> U(COMP 737 - Real-Time Systems)
+    D -.-> V(COMP 590 - Special Topics)
+    Q --> W(COMP 755 - Machine Learning)
+    K --> X(COMP 775 - Image Processing & Analysis)
+    taken
+    prereq
+    systems
+    theory
+    ai
+    graphics
+
+    classDef taken fill:#f96;
+    classDef prereq fill:#bbf;
+    classDef systems fill:#9f6;
+    classDef theory fill:#69f;
+    classDef ai fill:#f99;
+    classDef graphics fill:#6f9;
+    
+    class A,B,C,D,E,F,taken taken;
+    class G,H,I,J,K,L,M,N,O,P,Q,R,S,T,V,W,X,prereq prereq;
+    class G,H,I,J,N,O,U,systems systems;
+    class S,V,theory theory;
+    class Q,R,T,W,ai ai;
+    class K,X,graphics graphics;
