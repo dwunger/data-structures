@@ -1,5 +1,5 @@
 #include <windows.h>
-
+#include <wchar.h>
 /*
 `hInstance` is the handle to an instance or handle to a module. 
             The operating system uses this value to identify the 
@@ -17,7 +17,9 @@
 */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, int iCmdShow)
 {
-    MessageBox(NULL, TEXT("Hello from USER32!"), TEXT("HelloMSG"), 0);
+    
+    MessageBox(NULL, TEXT("Hello from USER32!"), TEXT("HelloMSG"), MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONQUESTION);
+
      
     return 0;
 }
