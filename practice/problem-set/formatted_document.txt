@@ -1,0 +1,54 @@
+﻿\033[1;34m**UNIT-I**
+
+1. \033[0;36mWrite a program to illustrate bitwise operators.
+2. \033[0;36mWrite a program to print all the alphabets and their equivalent ASCII values.
+3. \033[0;36mWrite a program to calculate the sum of squares of first n natural numbers using while loop.
+4. \033[0;36mWrite a program to illustrate shorthand operators used in C.
+5. \033[0;36mWrite a program to print the multiplication table in the following format:
+\033[0;37m   1  2  3  4  5
+   1  1  2  3  4  5
+   2  2  4  6  8 10
+   3  3  6  9 12 15
+   4  4  8 12 16 20
+   5  5 10 15 20 25\033[0;36m
+6. \033[0;36mWrite a program to calculate the factorial of a given number.
+7. \033[0;36mWrite a program to calculate the sum of squares of cubes of the first n natural numbers.
+8. \033[0;36mWrite a program to reverse the given number.
+9. \033[0;36mWrite a program to calculate mn value using do-while loop.
+10. \033[0;36mWrite a program to check whether the given number is a palindrome or not.
+11. \033[0;36mWrite a program to check whether the given number is an Armstrong number or not.
+12. \033[0;36mWrite a program to check whether the given number is a perfect number or not.
+13. \033[0;36mWrite a program to print the following format:
+\033[0;37m*
+* *
+* * *
+* * * *
+* * * * *\033[0;36m
+14. \033[0;36mProgram to calculate lucky number.
+15. \033[0;36mWrite a program to calculate the result of the series accurate up to the 7th digit:
+\033[0;37m x + x^3/3! + x^5/5! + ...\033[0;36m
+16. \033[0;36mAn electric power distribution company charges its domestic consumers as follows:
+ - Consumption Units    Rate of Charge
+ - 0-200               Rs. 0.50 per unit
+ - 201-400             Rs. 100 plus Rs. 0.65 per unit excess of 200
+ - 401-600             Rs. 230 plus Rs. 0.80 per unit excess of 400.
+Write a C program that reads the customer number and power consumed and prints the amount to be paid by the customer.\033[0m
+
+\033[1;34m**UNIT-II**
+
+17. \033[0;36mWrite a program to print the elements of an array in reverse order.
+18. \033[0;36mWrite a program to add all the elements of a two-dimensional array.
+19. \033[0;36mWrite a program to find the transpose of a given matrix.
+20. \033[0;36mWrite a program to find the smallest and largest element in a two-dimensional array.
+21. \033[0;36mWrite a program to illustrate call by value.
+22. \033[0;36mWrite a function to calculate the factorial of a given number.
+23. \033[0;36mWrite a function to sort the elements of an array.
+24. \033[0;36mWrite a recursive function to find the roots of the quadratic expression using the bisection method.
+25. \033[0;36mWrite a program to copy a string to another without using string handling functions.
+26. \033[0;36mWrite a program to check whether a given string is a palindrome or not.
+27. \033[0;36mWrite a function to find the largest element in an array.
+28. \033[0;36mWrite a recursive function \033[0;37mpower(base, exponent)\033[0;36m that returns \033[0;37mase^exponent.\033[0;36m
+29. \033[0;36mProgram to sort the characters in a given string.
+30. \033[0;36mWrite a function to convert all the uppercase letters to lowercase and lowercase letters to uppercase in a given string.
+31. \033[0;36mProgram to undefine an already defined macro.
+32. \033[0;36mProgram to illustrate conditional compilation using \033[0;37m#if, #endif, #else.\033[0m
