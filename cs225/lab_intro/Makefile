@@ -2,7 +2,7 @@ EXENAME = lab_intro
 OBJS = main.o PNG.o HSLAPixel.o lodepng.o lab_intro.o
 
 CXX = clang++
-CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
+CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic  -D'__builtin_is_constant_evaluated()=0'
 LD = clang++
 LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
