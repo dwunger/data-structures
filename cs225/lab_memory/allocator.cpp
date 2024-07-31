@@ -44,14 +44,15 @@ void Allocator::loadRooms(const std::string& file)
 {
     // Read in rooms
     fileio::loadRooms(file);
+    roomCount = fileio::getNumRooms();
     rooms = new Room[roomCount];
 
     totalCapacity = 0;
     int i = 0;
     while (fileio::areMoreRooms()) {
-        i++; 
         rooms[i] = fileio::nextRoom();
         totalCapacity += rooms[i].capacity;
+        i++; 
     }
 }
 
@@ -81,8 +82,45 @@ void Allocator::printRooms(std::ostream & stream /* = std::cout */)
     // Output the allocation
     stream << "Room Allocation (" << studentCount << "/" << totalCapacity << ")"
          << std::endl;
-    for (int i = 0; i < roomCount; i++)
+    for (int i = 0; i < roomCount; i++) {
         rooms[i].print(stream);
+    }
+}
+
+Allocator& Allocator::operator=(const Allocator& other) {
+    if (this != &other) {
+        clear();
+        copy(other);
+    }
+    return *this;
+}
+
+Allocator::~Allocator()
+{
+    clear();
+}
+
+Allocator::Allocator(const Allocator &other)
+{
+    copy(other);
+}
+
+void Allocator::copy(const Allocator& other){
+    
+    roomCount = other.roomCount;
+    studentCount = other.studentCount;
+    totalCapacity = other.totalCapacity;
+
+    alpha = new Letter[26];
+    std::copy(other.alpha, other.alpha + 26, alpha);
+
+    rooms = new Room[other.roomCount];
+    std::copy(other.rooms, other.rooms + roomCount, rooms);
+}
+
+void Allocator::clear() {
+    delete[] rooms;
+    delete[] alpha;
 }
 
 int Allocator::solve()
