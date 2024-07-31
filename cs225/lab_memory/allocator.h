@@ -25,7 +25,6 @@ class Allocator
      */
     Allocator(const std::string& studentFile, const std::string& roomFile);
 
-
     /**
      * Calls the solving routine to allocate student letter
      *  groups to rooms.
@@ -46,7 +45,16 @@ class Allocator
      */
     void printRooms(std::ostream & stream = std::cout);
 
+    ~Allocator();
+
+    Allocator(const Allocator& other);
+
+
+    Allocator& operator=(const Allocator& other);
   private:
+    void clear();
+    
+    void copy(const Allocator& other);
     /**
      * Creates the array of letters.
      */
@@ -64,7 +72,6 @@ class Allocator
      * @param file The file to read the room list from
      */
     void loadRooms(const std::string& file);
-
 
     /**
      * Runs the algorithm on the set of rooms and students.
