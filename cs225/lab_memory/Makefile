@@ -1,5 +1,5 @@
 # Executable names:
-EXE = allocate
+EXE = bin/allocate
 TEST = test
 
 # Add all object files needed for compiling:
