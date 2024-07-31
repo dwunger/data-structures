@@ -10,8 +10,10 @@
 #
 
 # Compiler/linker comfig and object/depfile directory:
-CXX = clang++
-LD = clang++
+#CXX = clang++
+CXX = g++
+#LD = clang++
+LD = g++
 OBJS_DIR = .objs
 
 # Add standard CS 225 object files
@@ -27,11 +29,11 @@ DEPFILE_FLAGS = -MMD -MP
 WARNINGS = -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function
 
 # Flags for compile:
-CXXFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c -D'__builtin_is_constant_evaluated()=0' 
-
+#CXXFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c -D'__builtin_is_constant_evaluated()=0' 
+CXXFLAGS += $(CS225) -std=c++1y -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c -fno-elide-constructors -fno-exceptions -D'__builtin_is_constant_evaluated()=0' 
 # Flags for linking:
-LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -lc++abi
-
+#LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -lc++abi
+LDFLAGS += $(CS225) -std=c++1y
 # Rule for `all` (first/default rule):
 all: $(EXE)
 
