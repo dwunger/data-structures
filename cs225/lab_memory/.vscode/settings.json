@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "cstdlib": "cpp",
+        "iosfwd": "cpp"
+    }
+}
