@@ -24,13 +24,17 @@ OBJS += cs225/HSLAPixel.o cs225/PNG.o cs225/lodepng/lodepng.o
 DEPFILE_FLAGS = -MMD -MP
 
 # Provide lots of helpful warning/errors:
-WARNINGS = -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function
+WARNINGS = -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function 
 
 # Flags for compile:
-CXXFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c
+#CXXFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -c
 
-# Flags for linking:
-LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -lc++abi
+# Removed libc++ for WSL
+CXXFLAGS += $(CS225) -std=c++1y -O0 $(WARNINGS) $(DEPFILE_FLAGS) -g -fsanitize=address -c
+
+# Removed for WSL
+# LDFLAGS += $(CS225) -std=c++1y -stdlib=libc++ -lc++abi
+LDFLAGS += -fsanitize=address
 
 # Rule for `all` (first/default rule):
 all: $(EXE)
