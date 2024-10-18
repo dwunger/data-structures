@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
 
 #include "../cs225/PNG.h"
 #include "../cs225/HSLAPixel.h"
@@ -131,7 +132,11 @@ TEST_CASE("List::sort #1", "[weight=5][part=2]") {
 
   int d = 60;
   vector<int> v = buildVector(b, d);
-  random_shuffle(v.begin(), v.end());
+
+  std::random_device rd;
+  std::mt19937 g(rd());
+
+  std::shuffle(v.begin(), v.end(), g);
 
   List<int> img_srt(v.begin(), v.end());
   img_srt.sort();
@@ -154,7 +159,11 @@ TEST_CASE("List::sort #2", "[weight=5][part=2]") {
 
   int d = 1;
   vector<int> v = buildVector(b, d);
-  random_shuffle(v.begin(), v.end());
+
+  std::random_device rd;
+  std::mt19937 g(rd());
+
+  std::shuffle(v.begin(), v.end(), g);
 
   List<int> img_srt(v.begin(), v.end());
   img_srt.sort();
