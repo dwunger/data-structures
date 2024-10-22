@@ -6,8 +6,8 @@
 template <class T>
 List<T>::List() { 
   // @TODO: graded in MP3.1
-    ListNode* head_ = NULL;
-    ListNode* tail_ = NULL;
+    head_ = NULL;
+    tail_ = NULL;
     length_ = 0;
 }
 
@@ -59,7 +59,7 @@ void List<T>::insertFront(T const & ndata) {
   if (tail_ == NULL) {
     tail_ = newNode;
   }
-  
+  head_ = newNode;
 
   length_++;
 
@@ -73,7 +73,24 @@ void List<T>::insertFront(T const & ndata) {
  */
 template <typename T>
 void List<T>::insertBack(const T & ndata) {
-  /// @todo Graded in MP3.1
+    //Let's create a new node on the heap and point 
+    //its prev member to the current tail of the List
+    ListNode* newNode = new ListNode(ndata);
+    newNode -> prev = tail_;
+    newNode -> next = NULL; //This should be redundant. the ctor should do this
+
+
+    //What if the list is empty? The head is pointing to NULL
+    if (head_ == NULL) {
+        head_ = newNode;
+    }
+    if (tail_ != NULL) {
+        tail_ -> next = newNode;
+    }
+
+    //The tail needs to be updated to point to our newly allocated node
+    tail_ = newNode;
+    length_++;
 }
 
 /**
